@@ -18,7 +18,7 @@ resource "local_file" "ansible_inventory" {
   filename = "inventory.ini"
   content  = <<EOT
 [main]
-${aws_instance.main.public_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/home/matt/Hng-stage4-task/tfkey.pem
+${aws_instance.main.public_ip} ansible_user=ubuntu ansible_ssh_private_key_file=/home/matt/Hng-stage4-task/Terraform/tfkey.pem
 EOT
 }
 
@@ -27,7 +27,7 @@ resource "null_resource" "run_ansible" {
   depends_on = [local_file.ansible_inventory]
 
   provisioner "local-exec" {
-    command = "ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory.ini playbook.yml"
+    command = "cd ../Ansible && ANSIBLE_HOST_KEY_CHECKING=False ansible-playbook -i inventory.ini playbook.yml"
   }
 }
 

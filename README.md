@@ -18,7 +18,7 @@ git clone https://github.com/Matt-Audu/infra-hng-stage4
   filename = "inventory.ini"
   content  = <<EOT
 [main]
-${aws_instance.main.public_ip} ansible_user=ubuntu ansible_ssh_private_key_file=${path.module}<path/to/tfkey.pem>
+${aws_instance.main.public_ip} ansible_user=ubuntu ansible_ssh_private_key_file=${path.module}<path/to/Terraform/tfkey.pem>
 EOT
 }
 ```
@@ -29,7 +29,7 @@ resource "local_file" "ansible_inventory" {
   filename = "inventory.ini"
   content  = <<EOT
 [main]
-${aws_instance.main.public_ip} ansible_user=matt ansible_ssh_private_key_file=${path.module}/tfkey.pem
+${aws_instance.main.public_ip} ansible_user=matt ansible_ssh_private_key_file=${path.module}Terraform/tfkey.pem
 EOT
 }
 
@@ -71,7 +71,7 @@ host_key_checking = False
 - Edit domain name and subdomains for the various services to your own
 
 ### Deploy infrastructure
-- Remove comment from Ansible block in Main.tf
+- Remove comment from Ansiblerblock in Terraform/main.tf
 - Run terraform init
 - Run terraform apply -auto-approve
 
