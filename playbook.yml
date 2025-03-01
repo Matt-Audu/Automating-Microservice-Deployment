@@ -1,0 +1,13 @@
+---
+- name: Application Deployment
+  hosts: main
+  become: yes
+  roles:
+    - git-install
+    - docker-install
+    - deploy
+
+   
+   
+
+   

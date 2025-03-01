@@ -1,0 +1,8 @@
+---
+# tasks file for git-install
+
+   - name: Install Git
+     apt:
+        name: git
+        state: present
+        update_cache: yes

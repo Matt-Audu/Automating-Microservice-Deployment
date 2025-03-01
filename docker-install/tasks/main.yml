@@ -1,0 +1,54 @@
+---
+# tasks file for docker-install
+
+    # Update the package index
+    - name: Update apt package index
+      apt:
+        update_cache: yes
+
+    # Install prerequisites
+    - name: Install ca-certificates and curl
+      apt:
+        name:
+          - ca-certificates
+          - curl
+        state: present
+
+    # Create the /etc/apt/keyrings directory
+    - name: Create /etc/apt/keyrings directory
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+
+    # Download Docker's GPG key
+    - name: Download Docker's GPG key
+      get_url:
+        url: https://download.docker.com/linux/ubuntu/gpg
+        dest: /etc/apt/keyrings/docker.asc
+        mode: '0644'
+
+    # Add Docker repository to Apt sources
+    - name: Add Docker repository to Apt sources and update package index
+      shell: |
+         echo \
+         "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/ubuntu \
+         $(. /etc/os-release && echo "${UBUNTU_CODENAME:-$VERSION_CODENAME}") stable" | \
+         sudo tee /etc/apt/sources.list.d/docker.list > /dev/null &&
+         sudo apt-get update
+
+    # Update the package index again
+    - name: Update apt package index again
+      apt:
+        update_cache: yes
+
+    # Install Docker Engine and additional tools
+    - name: Install Docker Engine and plugins
+      apt:
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+        state: present

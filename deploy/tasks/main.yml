@@ -1,0 +1,15 @@
+---
+# tasks file for deploy
+
+   - name: Clone the Git repository
+     git:
+        repo: 'https://github.com/Matt-Audu/DevOps-Stage-4'
+        dest: /home/ubuntu/DevOps-Stage-4
+        version: main        
+        clone: yes            
+        update: yes
+
+   - name: Change directory and run a command
+     shell: |
+       cd /home/ubuntu/DevOps-Stage-4 &&
+       docker compose up -d 
