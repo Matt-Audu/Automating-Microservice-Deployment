@@ -77,8 +77,8 @@ host_key_checking = False
 
 ### Access Endpoints
 
-- Frontend: https://domain.com e.g mattaudu.xyz
-- Auth API: https://auth.domain.com e.g auth.mattaudu.xyz
-- Todos API: https://todos.domain.com e.g todos.mattaudu.xyz
-- Users API: https://users.domain.com e.g users.mattaudu.xyz
+- Frontend: https://domain.com is https://mattaudu.xyz
+- Auth API: https://auth.domain.com is https://auth.mattaudu.xyz
+- Todos API: https://todos.domain.com is https://todos.mattaudu.xyz
+- Users API: https://users.domain.com is https://users.mattaudu.xyz
 
