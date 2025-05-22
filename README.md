@@ -8,7 +8,7 @@
 
 ### Clone Git repository
 ```
-git clone https://github.com/Matt-Audu/infra-hng-stage4
+git clone https://github.com/Matt-Audu/Automating-Microservice-Deployment
 ``` 
 
 ### Set up your environment
